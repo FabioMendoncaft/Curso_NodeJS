@@ -33,6 +33,14 @@ const Post = require('./models/Post')
         })
     })
 
+    app.get('/deletar/:id', function(req, res){
+        Post.destroy({where: {'id': req.params.id}}).then(function(){
+            res.send('Postagem excluida!')
+        }).catch(function(erro){
+            res.send('Erro')
+        })
+    })
+
 app.listen(8081, function(){
     console.log('Servidor rodando na url: http://localhost:8081')
 })
